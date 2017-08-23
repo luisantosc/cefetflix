@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+	<head>
+	    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+		<script src="./js/jquery.min.js"></script>
+		<script src="./js/cefetflix.js"></script>	
+		<script>
+			$(function(){
+			console.log(filmes);
+				$.each(filmes,function(indice,filme){
+					var $ul = $("<ul />");
+					var $ul1 = $("<ul />");
+					var $ul2 = $("<ul />");
+					var $div = $("<div />");
+					 function estrela(nota){
+						for( var i=1 ;i<=nota ;i++){
+							$div.append($("<img />")
+								.attr("src","./img/star.jpg")
+							)
+						}
+						return $div
+					}
+					$.each(filme.opinioes,function(indice,rat){
+						$ul.append($("<li />")
+							.text(estrela(rat.rating))
+								.text(rat.descricao)
+						)
+					})
+					$.each(filme.elenco,function(indice,part){
+						$ul1.append($("<li />")
+							.text(part)
+						)
+					})
+					$.each(filme.generos,function(indice,gen){
+						$ul2.append($("<li />")
+							.text(gen)
+						)
+					})
+					$(".catalogo")
+						.append($("<div />")
+							.addClass("filme")
+							.append($("<h2 />")
+								.text(filme.titulo)
+							)
+							.append($("<img />")
+								.attr("src",filme.figura)
+							)
+							.append($("<p />")
+								.text(filme.resumo)
+							)
+							.append($("<div />")
+								.addClass("filme-details")
+								.append($("<p />")
+									.text("Elenco:")
+									.append($ul1)
+								)
+								.append($("<p />")
+									.text("Gêneros:")
+									.append($ul2)
+								)
+							)
+							.append($("<div />")
+								.addClass("filme-rating")
+								.append($ul)
+									
+								
+							)
+							
+							
+					)
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<h1> Filmes </h1>
+		<div class="catalogo">
+			<div class="filme">
+				<h2> filmes.titulo </h2>
+				<img src="http://botanicapp.com.br/img/carros.png"/>
+				<p> Resumo: </p>
+				<div class="filme-rating">
+					<p> filmes.opinioes.descricao</p>
+					<img src="./img/star.jpg" class="estrela"/>
+					<img src="./img/star.jpg" class="estrela"/>
+					
+				</div>
+				<div class="filme-details">
+					
+					<p> filmes.elenco </p>
+					<ul>
+						
+					</ul>
+					<p> filmes.generos </p>
+					<ul>
+						
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

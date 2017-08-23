@@ -1,0 +1,10 @@
+.estrela{
+	width:20px;
+	height:20px;
+	float:left;
+	margin-right: 5px;
+	margin-top:0;
+}
+p{
+	clear:left;
+}
