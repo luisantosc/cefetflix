@@ -47,9 +47,10 @@
 							if(rel == ind){
 								$div1.append($("<img />")
 									.attr("src",film.figura)
+									.addClass("filme-relacionado")
 									
 								)
-								.append($("<br/>"))
+								
 								
 							}
 						})
@@ -63,6 +64,7 @@
 							)
 							.append($("<img />")
 								.attr("src",filme.figura)
+								.addClass("filme-figura")
 							)
 							.append($("<p />")
 								.text(filme.resumo)
