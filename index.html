@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 	<head>
+		<link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
 	    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
 		<script src="./js/jquery.min.js"></script>
 		<script src="./js/cefetflix.js"></script>	
@@ -12,19 +13,24 @@
 					var $ul1 = $("<ul />");
 					var $ul2 = $("<ul />");
 					var $div = $("<div />");
+					var $div1 = $("<div />");
 					 function estrela(nota){
+						$div = $("<div />");
 						for( var i=1 ;i<=nota ;i++){
-							$div.append($("<img />")
-								.attr("src","./img/star.jpg")
-							)
+								$div.append($("<i />")
+									.addClass("fa fa-star")
+									.attr("aria-hidden","true")
+								)
 						}
 						return $div
 					}
 					$.each(filme.opinioes,function(indice,rat){
 						$ul.append($("<li />")
-							.text(estrela(rat.rating))
 								.text(rat.descricao)
+								.append(estrela(rat.rating))
 						)
+						
+						
 					})
 					$.each(filme.elenco,function(indice,part){
 						$ul1.append($("<li />")
@@ -36,6 +42,19 @@
 							.text(gen)
 						)
 					})
+					$.each(filme.titulosSemelhantes,function(indi,rel){
+						$.each(filmes,function(ind,film){
+							if(rel == ind){
+								$div1.append($("<img />")
+									.attr("src",film.figura)
+									
+								)
+								.append($("<br/>"))
+								
+							}
+						})
+					})
+					
 					$(".catalogo")
 						.append($("<div />")
 							.addClass("filme")
@@ -47,6 +66,9 @@
 							)
 							.append($("<p />")
 								.text(filme.resumo)
+							)
+							.append($("<p />")
+								.text("Classificação: "+filme.classificacao)
 							)
 							.append($("<div />")
 								.addClass("filme-details")
@@ -62,10 +84,13 @@
 							.append($("<div />")
 								.addClass("filme-rating")
 								.append($ul)
-									
 								
 							)
+							.append($("<p />")
+								.text("Títulos Relacionados")
+								.append($div1)
 							
+							)
 							
 					)
 				})
@@ -75,29 +100,7 @@
 	<body>
 		<h1> Filmes </h1>
 		<div class="catalogo">
-			<div class="filme">
-				<h2> filmes.titulo </h2>
-				<img src="http://botanicapp.com.br/img/carros.png"/>
-				<p> Resumo: </p>
-				<div class="filme-rating">
-					<p> filmes.opinioes.descricao</p>
-					<img src="./img/star.jpg" class="estrela"/>
-					<img src="./img/star.jpg" class="estrela"/>
-					
-				</div>
-				<div class="filme-details">
-					
-					<p> filmes.elenco </p>
-					<ul>
-						
-					</ul>
-					<p> filmes.generos </p>
-					<ul>
-						
-					</ul>
-					
-				</div>
-			</div>
+			
 		</div>
 		
 	</body>
