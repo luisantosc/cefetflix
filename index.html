@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 	<head>
+		<link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Lobster" rel="stylesheet">
 		<link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
 	    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
 		<script src="./js/jquery.min.js"></script>
@@ -27,7 +28,7 @@
 					$.each(filme.opinioes,function(indice,rat){
 						$ul.append($("<li />")
 								.text(rat.descricao)
-								.append(estrela(rat.rating))
+								.prepend(estrela(rat.rating))
 						)
 						
 						
@@ -47,10 +48,10 @@
 							if(rel == ind){
 								$div1.append($("<img />")
 									.attr("src",film.figura)
-									.addClass("filme-relacionado")
+									
 									
 								)
-								
+								.addClass("filme-relacionado")
 								
 							}
 						})
@@ -66,22 +67,25 @@
 								.attr("src",filme.figura)
 								.addClass("filme-figura")
 							)
+
 							.append($("<p />")
 								.text(filme.resumo)
+								.addClass("filme-resumo")
 							)
 							.append($("<p />")
 								.text("Classificação: "+filme.classificacao)
+								.addClass("classificacao")
 							)
 							.append($("<div />")
 								.addClass("filme-details")
 								.append($("<p />")
-									.text("Elenco:")
-									.append($ul1)
+									.text("Elenco:")	
 								)
+								.append($ul1)
 								.append($("<p />")
 									.text("Gêneros:")
-									.append($ul2)
 								)
+								.append($ul2)
 							)
 							.append($("<div />")
 								.addClass("filme-rating")
@@ -90,17 +94,25 @@
 							)
 							.append($("<p />")
 								.text("Títulos Relacionados")
-								.append($div1)
-							
+								.addClass("relacionado")
 							)
-							
+							.append($div1)
 					)
 				})
+				$(".filme-relacionado img").on({
+				 mouseenter: function() {
+					$(this).animate({width:'350px'},800);
+				 },
+				 mouseleave: function() {
+					$(this).animate({width:'300px'},800);
+				 }
+				}); 
+				
 			});
 		</script>
 	</head>
 	<body>
-		<h1> Filmes </h1>
+		<img src="./img/netflix.jpg" class="netflix"/>
 		<div class="catalogo">
 			
 		</div>
